@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUXSTAY - Đặt phòng khách sạn</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <a href="#" class="logo">LUX<span>STAY</span></a>
+
+    <nav>
+        <a href="#home">Trang chủ</a>
+        <a href="#rooms">Phòng nghỉ</a>
+        <a href="#about">Giới thiệu</a>
+    </nav>
+
+    <a href="#rooms" class="header-btn">Đặt phòng</a>
+</header>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <p class="subtitle">TRẢI NGHIỆM NGHỈ DƯỠNG ĐẲNG CẤP</p>
+
+        <h1>Tìm nơi nghỉ dưỡng<br>
+            <span>hoàn hảo</span> cho bạn
+        </h1>
+
+        <p>Khám phá những căn phòng tiện nghi,
+           tận hưởng kỳ nghỉ theo cách của riêng bạn.</p>
+
+        <a href="#rooms" class="main-btn">Khám phá phòng nghỉ →</a>
+    </div>
+</section>
+
+<section class="search-section">
+    <form id="searchForm" class="search-form">
+        <div>
+            <label for="checkin">Ngày nhận phòng</label>
+            <input type="date" id="checkin" required>
+        </div>
+
+        <div>
+            <label for="checkout">Ngày trả phòng</label>
+            <input type="date" id="checkout" required>
+        </div>
+
+        <div>
+            <label for="guests">Số khách</label>
+            <select id="guests">
+                <option value="1">1 khách</option>
+                <option value="2" selected>2 khách</option>
+                <option value="3">3 khách</option>
+                <option value="4">4 khách</option>
+            </select>
+        </div>
+
+        <button type="submit" class="main-btn">Tìm phòng</button>
+    </form>
+</section>
+
+<section class="rooms-section" id="rooms">
+    <div class="section-heading">
+        <p class="subtitle">KHÔNG GIAN NGHỈ DƯỠNG</p>
+        <h2>Phòng nghỉ nổi bật</h2>
+        <p>Lựa chọn căn phòng phù hợp với kỳ nghỉ của bạn.</p>
+    </div>
+
+    <div class="room-list" id="roomList">
+
+        <article class="room-card" data-capacity="2">
+            <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=900"
+                 alt="Phòng Superior">
+            <div class="room-info">
+                <span class="room-type">SUPERIOR</span>
+                <h3>Phòng Superior</h3>
+                <p>1 giường đôi · 2 khách · Wi-Fi</p>
+                <div class="room-bottom">
+                    <p><strong>850.000đ</strong> / đêm</p>
+                    <button class="book-btn"
+                        data-name="Phòng Superior"
+                        data-price="850000">Đặt phòng</button>
+                </div>
+            </div>
+        </article>
+
+        <article class="room-card" data-capacity="3">
+            <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=900"
+                 alt="Phòng Deluxe">
+            <div class="room-info">
+                <span class="room-type">DELUXE</span>
+                <h3>Phòng Deluxe</h3>
+                <p>1 giường lớn · 3 khách · View đẹp</p>
+                <div class="room-bottom">
+                    <p><strong>1.200.000đ</strong> / đêm</p>
+                    <button class="book-btn"
+                        data-name="Phòng Deluxe"
+                        data-price="1200000">Đặt phòng</button>
+                </div>
+            </div>
+        </article>
+
+        <article class="room-card" data-capacity="4">
+            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=900"
+                 alt="Phòng Suite">
+            <div class="room-info">
+                <span class="room-type">SUITE</span>
+                <h3>Phòng Suite</h3>
+                <p>Phòng rộng · 4 khách · Cao cấp</p>
+                <div class="room-bottom">
+                    <p><strong>2.000.000đ</strong> / đêm</p>
+                    <button class="book-btn"
+                        data-name="Phòng Suite"
+                        data-price="2000000">Đặt phòng</button>
+                </div>
+            </div>
+        </article>
+
+    </div>
+    <p id="emptyMessage" hidden>Không có phòng phù hợp với số khách.</p>
+</section>
+
+<section class="about-section" id="about">
+    <p class="subtitle">VỀ LUXSTAY</p>
+    <h2>Kỳ nghỉ đáng nhớ bắt đầu từ đây</h2>
+    <p>Không gian tiện nghi, dịch vụ chu đáo
+       và trải nghiệm đặt phòng thuận tiện.</p>
+</section>
+
+<footer>
+    <h2>LUXSTAY</h2>
+    <p>Website đặt phòng khách sạn</p>
+    <p>© 2026 LUXSTAY. Giao diện phục vụ mục đích học tập.</p>
+</footer>
+
+<div class="modal" id="bookingModal" hidden>
+    <div class="modal-content">
+        <button type="button" id="closeModal" class="close-btn">×</button>
+        <h2>Xác nhận đặt phòng</h2>
+        <p id="selectedRoom"></p>
+
+        <form id="bookingForm">
+            <label for="customerName">Họ và tên</label>
+            <input type="text" id="customerName"
+                   placeholder="Nhập họ và tên" required>
+
+            <label for="customerPhone">Số điện thoại</label>
+            <input type="tel" id="customerPhone"
+                   placeholder="Nhập số điện thoại" required
+                   pattern="[0-9]{10,11}"
+                   title="Vui lòng nhập số điện thoại gồm 10 hoặc 11 chữ số">
+
+            <button type="submit" class="main-btn">
+                Xác nhận đặt phòng
+            </button>
+        </form>
+        <p id="bookingMessage" role="status"></p>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
